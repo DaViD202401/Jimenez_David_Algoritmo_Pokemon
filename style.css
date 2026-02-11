@@ -1,0 +1,93 @@
+:root {
+  --bg: #0b0b0b;
+  --panel: #111;
+  --border: #242424;
+  --text: #fff;
+  --orange: #ffcb05;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+@media(min-width:900px){
+  .grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.primary {
+  background: var(--orange);
+}
+
+.ghost {
+  background: #222;
+  color: white;
+}
+
+.danger {
+  background: #b32121;
+  color: white;
+}
+
+.duel {
+  display: grid;
+  gap: 10px;
+}
+
+@media(min-width:900px){
+  .duel { grid-template-columns: 1fr 1fr; }
+}
+
+.pick {
+  background: #1a1a1a;
+  border: 1px solid var(--border);
+  padding: 14px;
+}
+
+.pick:hover {
+  border-color: var(--orange);
+}
+
+.pokeimg {
+  width: 96px;
+  height: 96px;
+  display: block;
+}
+
+.topbox {
+  padding: 10px;
+}
+
+.toprow {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px;
+  border-bottom: 1px solid #222;
+}
