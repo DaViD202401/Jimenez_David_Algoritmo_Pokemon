@@ -145,7 +145,7 @@ function vote(winner){
   newDuel();
 }
 
-function renderTop(){
+async function renderTop(){
   const key = `${segmentSelect.value}__${contextSelect.value}`;
   const bucket = state.buckets[key];
 
@@ -153,13 +153,36 @@ function renderTop(){
     .sort((a,b)=> b[1]-a[1])
     .slice(0,10);
 
-  topBox.innerHTML = arr.map((r,i)=>
+  topBox.innerHTML = "Cargando...";
+
+  // Obtener nombres desde la API
+  const enriched = await Promise.all(
+    arr.map(async (r)=>{
+      const id = r[0];
+      try{
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const data = await res.json();
+        return {
+          name: data.name,
+          rating: r[1]
+        };
+      }catch{
+        return {
+          name: `Pokemon #${id}`,
+          rating: r[1]
+        };
+      }
+    })
+  );
+
+  topBox.innerHTML = enriched.map((p,i)=>
     `<div class="toprow">
-      <div>${i+1}. #${r[0]}</div>
-      <div>${r[1].toFixed(1)}</div>
+      <div>${i+1}. ${p.name}</div>
+      <div>${p.rating.toFixed(1)}</div>
     </div>`
   ).join("");
 }
+
 
 document.getElementById("btnA").addEventListener("click",()=>vote("A"));
 document.getElementById("btnB").addEventListener("click",()=>vote("B"));
