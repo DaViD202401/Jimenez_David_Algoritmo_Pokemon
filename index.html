@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PokéMash — Ranking Pokémon Gen 1</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="wrap">
+    <h1>⚡ PokéMash</h1>
+    <p class="sub">Comparación A/B + Ranking Elo con Pokémon (Gen 1)</p>
+  </header>
+
+  <main class="wrap grid">
+    <section class="card">
+      <h2>1) Configura</h2>
+
+      <label>Tipo de entrenador</label>
+      <select id="segmentSelect"></select>
+
+      <label>Contexto</label>
+      <select id="contextSelect"></select>
+
+      <div class="row">
+        <button id="btnNewPair" class="ghost">🔁 Nuevo duelo</button>
+        <button id="btnReset" class="danger">🧹 Reiniciar</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) Vota</h2>
+      <p id="question" class="question">—</p>
+
+      <div class="duel">
+        <button id="btnA" class="pick">
+          <span class="tag">A</span>
+          <div>
+            <img id="imgA" class="pokeimg"/>
+            <span id="labelA" class="title">—</span>
+          </div>
+        </button>
+
+        <button id="btnB" class="pick">
+          <span class="tag">B</span>
+          <div>
+            <img id="imgB" class="pokeimg"/>
+            <span id="labelB" class="title">—</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="row">
+        <button id="btnShowTop" class="primary">🏆 Ver Top 10</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) Ranking</h2>
+      <div id="topBox" class="topbox"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
